@@ -1,0 +1,21 @@
+@model Age.Models.dtoInfo2;
+<form asp-controller="Home" method="post" asp-action="Search" id="Search" name="Search">
+    <div style="width:990px; margin: 0 auto;  ">
+        <br>
+        <br>
+        <br>
+        <div style="text-align:center"  >
+            <img src="~/images/title.png"  style="width:700px ; margin-bottom:0px" alt=""/>
+        </div>
+        <div style="text-align:center">
+            <br><br>
+            <span class="labText">請輸入身分證字號&nbsp;:&nbsp;</span>
+            <input type="text" ID="txtBox" name="txtBox" class="txtBox" style="font-size:20px">
+            &nbsp;&nbsp;
+            <input type="submit" value="查詢" style="font-size: 23px; margin-left:20px" class="btn-default"> 
+            <a asp-controller="Home" asp-action="Index" style=" font-family:標楷體" class="ButtonClean">
+                返回
+            </a>
+        </div>
+    </div>
+</form>

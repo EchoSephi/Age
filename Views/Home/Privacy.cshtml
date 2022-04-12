@@ -1,0 +1,137 @@
+﻿@model Age.Data.dtoReturn1;
+
+<script>
+    @* <link href="~/css/styleA.css" rel="stylesheet" type="text/css" /> *@
+    function printView()
+    {
+        window.print();
+    }
+</script>    
+<form asp-controller="Home">
+    <div style="text-align:center">
+        <div>
+            <img src="~/images/title.png"  style="width:700px ; margin-bottom:0px" alt=""/>
+        </div>
+        @{
+            if (@Model.msg == ""){
+                <div id="Result" class="featured-box featured-box-tertiary collapse in" aria-expanded="true" style="display: inline;">
+                    <div class="box-content">
+                        <h3>取號結果</h3>
+                        <div style="text-align:left; font-size:20px" >
+                            您已取號成功，已取得「宏恩醫院」
+                            <span style="color:Red ; font-size:40px"  > @Model.取號碼</span>
+                            &nbsp; 號(如需留存資料，請
+                            <span style="color:Red ; font-size:25px" >自行列印</span>
+                            )&nbsp;&nbsp;
+                            <input id="print" type="button" value="列印" style="font-size: 23px;" class="btn-default" onclick="printView()"/>
+                            <br>
+                            <br>
+                            姓名:<span id="spanName"  style="font-size:35px">@Model.姓名</span>
+                            <br>
+                            <br>
+                            登記日期時段:<span id="spanDateTime"   style="color:Red ; " >@Model.報到時間</span>
+                            <br>
+                            <br>
+                            登記位置:台北市仁愛路4段61號5樓櫃檯 
+                            <br>
+                            <br>
+                            請於
+                            <span style="color:Red ; " id="spanDateTime2"  >@Model.報到時間</span>
+                            ，至
+                            <span style="color:Red ; "  id="spanDateTime3" >宏恩醫院&nbsp;體檢中心</span>
+                            登記健康檢查!
+                            <br/>
+                            若您無法依原本時間登記，請於
+                            <span style="color:Red ; " >@Model.補登記時間</span>
+                            至醫院補登記<br/>
+                            <br/>
+                            特別提醒:
+                            <br>
+                            <ul>
+                                <li>登記日期時段為到醫院
+                                    <span style="color:Red ; " >「登記健康檢查」</span>
+                                    之日期，不是到醫院
+                                    <span style="color:Red ; " >「做健康檢查」</span>
+                                    <br>之日期。<br/>
+                                </li>
+                                <br/>
+                                <li>請記得攜帶:(1)
+                                    <span style="color:Red ; " >「中華民國身分證」</span>
+                                    及(2)
+                                    <span style="color:Red ; " >「健保卡」</span>
+                                    辦理登記。<br>
+                                </li><br>
+                                <li>本號碼單
+                                    <span style="color:Red ; " >
+                                        <u>僅證明取得登記資格</u>
+                                    </span>
+                                    ，若未依特約醫院規定之日期及期限到場領取
+                                    <br>
+                                    資料及完成預約登記者，則
+                                    <span style="color:Red ; " >
+                                        <u>視同放棄登記資格</u>
+                                    </span>。
+                                    <br>
+                                </li>
+                                <br>
+                                <li>
+                                    若您曾於系統上申請異動，則視同放棄原取號特約醫院之登記資格，則此<br>號碼單則視為失效。<br>
+                                </li>
+                                <br>
+                                <li>
+                                    若無法依醫院規定「登記日時段」登記者，請於
+                                    <span style="color:Red ; " >@Model.補登記時間</span>
+                                    止到醫院現場辦理補登記作業。
+                                </li>
+                            </ul>
+                            <br>
+                            醫院諮詢電話：02-2771-3161#555<br/>
+                        </div>
+                    </div>
+                </div>
+                <blockquote class="blockquote-red">
+                    <div class="panel-title2">
+                        您若對於取號結果有任何疑問，請撥打宏恩醫院老人健康檢查服務諮詢專線：02-2771-3161#555 洽詢，謝謝！
+                    </div>
+                </blockquote>
+                <br>
+                <br>
+                <br>
+                <br>
+                <div>
+                    <h3>到院交通</h3>
+                    <img src="~/images/map.jpg" style=" width: 598px; height: 401px;" alt="" />
+
+                    <table>
+                        <tr>
+                            <td style="width:20%"></td>
+                            <td style="width:60%">＊捷運：忠孝復興站三號出口向前走，至大安路右轉直行，走到仁愛路不需過馬路左轉，在富邦銀行旁邊。</td>
+                            <td style="width:20%"></td>
+                        </tr>
+                    </table>
+                    <br>
+                    <br>
+                    <br>
+
+                    <h3>公車路線(Bus Line)</h3>
+                    (1)站名：仁愛大安路口<br>
+                    245、37、261、263、270、311、621、630、651、665、1728<br>
+                    <br>
+                    <br>
+                    (2)站名：仁愛敦化路口
+                    <br>
+                    0東、33、37、41、52、245、261、263、270、275、275副、<br>
+                    285、292、292副、311、556、621、630、651、665、902、<br>
+                    905、905副、906、906副、909、1211、1728、敦化幹線
+                    <br>
+                </div>
+                <br>
+                <br>
+                <br>
+            }
+        } else {
+             <h2> @Model.msg</h2>
+        }
+
+    </div>
+</form>

@@ -1,0 +1,25 @@
+﻿ <form asp-controller="Home">
+    <div style="text-align:center">
+            
+        <br>
+        <img src="~/images/title.png" style="width:700px ; margin-bottom:0px" alt="" />
+        <br>
+        <br>
+        <h2>@ViewData["msg1"]</h1>
+        
+        @{
+            string msg2 = ViewData["msg2"].ToString();
+            if (msg2 != "") {
+                <label style="font-size:20px;color:#FF3300">@msg2</label>
+            }else {
+                <a asp-controller="Home" asp-action="Page" style="font-size: 23px; margin-left:20px" class="btn-default">
+                    開始取號
+                </a>
+
+                <a asp-controller="Home" asp-action="Search" style="font-size: 23px; margin-left:20px" class="btn-default">
+                    查詢預約號碼
+                </a>
+            }
+        }
+    </div>
+</form>

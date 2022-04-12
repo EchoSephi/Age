@@ -1,0 +1,100 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.btn-default:hover {
+  color: #333;
+  background-color: #e6e6e6;
+  border-color: #adadad;
+}
+
+.btn-default {
+  padding: 10px 16px;
+  color: #2BAAB1;
+  line-height: 1.33;
+  border-radius: 6px;
+  font-weight: bolder;
+  margin-bottom: 5px;
+}
+
+.Button {
+  margin: 10px 8px;
+  padding: 10px 20px;
+  font-weight: bold;
+  font-size: 23px;
+  line-height: 23px;
+  cursor: pointer;
+  color: #173100;
+  background-color: #CBE3AA;
+  border: 1px solid #8fbb3c;
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -khtml-border-radius: 3px;
+  position: relative;
+  z-index: 10;
+  box-shadow: 0px 0px 1px 0px #8fbb3c, 0px 1px 2px 0px #999999, 0px 1px 1px 0px #ffffff inset;
+  -moz-box-shadow: 0px 1px 2px 0px #999999, 0px 1px 1px 0px #ffffff inset;
+  -webkit-box-shadow: 0px 1px 2px 0px #999999, 0px 1px 1px 0px #ffffff inset;
+  *border: 0;
+  *box-shadow: 0px 0px 1px 0px #BFBFBF;
+}
+
+.Button:hover {
+  color: #364d22;
+  background-color: #B9D690;
+  box-shadow: 0px 0px 1px 0px #8fbb3c, 0px 0px 0px #ffffff, 0px 0px 0px #ffffff;
+  -moz-box-shadow: 0px 0px 0px #ffffff, 0px 0px 0px #ffffff;
+  -webkit-box-shadow: 0px 0px 0px #ffffff, 0px 0px 0px #ffffff;
+  *border: 0;
+  *box-shadow: 0px 0px 1px 0px #BFBFBF;
+}
+
+.txtBox {
+  border: 2px solid rgb(173, 204, 204);
+  height: 31px;
+  width: 250px;
+  box-shadow: 0px 0px 27px rgb(204, 204, 204) inset;
+  transition: 500ms all ease;
+  padding: 3px 3px 3px 3px;
+}
+
+.labText {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #333;
+  background-color: #fff;
+  font-size: 30px;
+}
+
+.btn-default:hover {
+  color: #333;
+  background-color: #e6e6e6;
+  border-color: #adadad;
+}
+
+.btn-default2 {
+  padding: 10px 16px;
+  color: #2BAAB1;
+  line-height: 1.33;
+  border-radius: 6px;
+  font-weight: bolder;
+  margin-bottom: 5px;
+  background-color: White;
+}

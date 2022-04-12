@@ -1,0 +1,274 @@
+@model Age.Models.dtoInfo;
+<form asp-controller="Home" method="post" asp-action="Page" id="Page" name="Page" >
+    <br>
+    <div style="text-align:center">
+        <div>
+            <img src="~/images/title.png"  style="width:700px ; margin-bottom:0px" alt=""/>
+        </div>
+    </div>
+    <div style="text-align:center ;font-size:x-large ; color: Green ;" id="divQuestion">
+        <img src="~/images/question_1.png" style="width:700px"  id="questionImage1" alt="" hidden/>
+        <img src="~/images/question_2.png" style="width:700px"  id="questionImage2" alt="" hidden/>
+        <img src="~/images/question_3.png" style="width:700px"  id="questionImage3" alt="" hidden/>
+
+        <a id="questionImage4" href="http://www.hpa.gov.tw/Home/ndex.aspx" target="_blank" hidden>
+            <img src="~/images/question_N.png" style="width:700px"  title = "點選後可前往衛生福利部國民健康署網站"border="0"  />
+        </a>
+        <br>
+        <br>
+        <div id="divCheckBox_1">
+            <input type="checkbox" id="checkbox_1_Y" class="checkBoxFirst" style="zoom: 3"/>
+                <span id="spanY" style="font-family:標楷體; font-size: 30px;" > 
+                    <b>是</b>
+                </span> &nbsp; &nbsp;&nbsp; 
+            <input type="checkbox" id="checkbox_1_N" class="checkBoxFirst" style="zoom: 3"/>
+                <span id="spanN" style="font-family:標楷體; font-size: 30px; " >
+                    <b>不是</b>
+            </span>&nbsp; &nbsp;&nbsp; 
+            <input type="button" id="next1" value="下一步" 
+                class="Button" 
+                style="font-family:標楷體"/>
+
+            <a asp-controller="Home" asp-action="Index" style=" font-family:標楷體" class="ButtonClean">
+                返回
+            </a>
+        </div>
+    </div>
+
+    <div id="divMaintain" class="boxA">
+        <h3>登記資料填寫</h3>
+        <table class="Frombox">
+            <colgroup>
+                <col span="1" class="title1" style="width:15%;" /> <!-- 在style依文字多寡自行控制寬度值 -->
+                <col span="1" class="title2" style="width:25%;" />
+                <col span="1" class="title1" style="width:15%;" /> <!-- 在style依文字多寡自行控制寬度值 -->
+                <col span="1" class="title2" />
+            </colgroup>
+            <tbody>
+                <tr class="tr1">
+
+                    <td class="td1">姓名<span class="red">*</span></td>
+                    <td>
+                        <input type="text" id="txtName" name="txtName" tabindex="1"/>
+                    </td>
+                    <td class="td1">身分證號<span class="red">*</span></td> 
+                    <td>
+                        <input  type="text" maxlength="10" id="txtIR_ID" name="txtIR_ID" tabindex="2"  onfocusout="CheckID()"  />
+                        <span id="CVUserName" style="color:Red;display:none;"><br />身分證號需填寫</span>
+                    </td>
+
+                </tr>
+                <tr class="tr2">
+                    <td class="td2">電話</td> 
+                    <td>
+                        <input  type="text" maxlength="15" id="txtPD_Tel" name="txtPD_Tel" tabindex="3" onfocusout="checkPhone()"  /> 
+                        <br />
+                        <span>範例:25550000#730</span>
+                    </td>
+                    <td class="td2">EMAIL</td>
+                    <td>
+                        <input  type="text"  id="txtEmail" name="txtEmail" tabindex="4"  />
+                    </td>
+                </tr>
+                <tr class="tr1">
+                    <td class="td1">手機</td>
+                    <td>
+                        <input  type="text" maxlength="10" id="txtPD_Cellphone" name="txtPD_Cellphone" tabindex="5" onfocusout="CheckMobile()"  />
+                        <br />
+                        <span>範例:0987654321</span>
+                    </td>
+                    <td class="td1">
+                        <span id="lblVCode">驗證碼<span class="red">*</span>
+                        </span>
+                    </td>
+                    <td>
+                    <div id="ContentPlaceHolder1_ucHealthRegister_pnlHideVCode">
+
+                        <input  type="text" maxlength="4" id="txtVer" class="inputtext2" tabindex="6"   />
+                        @* <input type="hidden" id="hiddenVer" /> *@
+                        <br />
+                        <span>請輸入 @ViewData["security1"] </span>
+
+                    </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table>
+            <tbody>
+                <tr>
+                    <td>備註：1. 手機、電話至少擇一填寫。</td>
+                </tr>
+                <tr>
+                    <td>2. 每人每年取號後，僅能登記1次及1家醫院，請勿重復取號。</td>
+                </tr>
+                <tr>
+                    <td>3. 第一階段取號日期為：2018/02/22 07:00起，至2018/02/27前</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="btnbox">
+            <input type="submit" class="Button" style="height:40px;" onclick="btnSave(); return false;" value="取號登記"/>
+        </div>
+    </div>
+</form>
+<script type="text/jscript">
+    let flag = 0;
+    const security1 ='@ViewData["security1"]';
+    const answer1 = '@ViewData["answer1"]'; 
+    $("#questionImage1")[0].hidden = false;
+    // console.log(answer1);
+
+    $("#divMaintain").hide();
+    $("#next1").click(function(){
+        var a = $("#checkbox_1_Y")[0].checked;
+        var b = $("#checkbox_1_N")[0].checked;
+
+        if(flag == 0 && $("#checkbox_1_Y")[0].checked === true)
+        {
+            // console.log('是否台北市民');
+            $("#questionImage1")[0].hidden = true;
+            $("#questionImage2")[0].hidden = false;
+            $("#questionImage3")[0].hidden = true;
+            $("#questionImage4")[0].hidden = true;
+
+            $("#checkbox_1_Y")[0].checked = false;
+            $("#checkbox_1_N")[0].checked = false;
+
+            flag = 1;
+        }
+        else if (flag == 1 && $("#checkbox_1_Y")[0].checked === true)
+        {
+            // console.log('是否同意');
+            $("#questionImage1")[0].hidden = true;
+            $("#questionImage2")[0].hidden = true;
+            $("#questionImage3")[0].hidden = false;
+            $("#questionImage4")[0].hidden = true;
+
+            $("#checkbox_1_Y")[0].checked = false;
+            $("#checkbox_1_N")[0].checked = false;
+            $("#spanY").text("同意");
+            $("#spanN").text("不同意");
+            flag = 2;
+        }
+        else if ($("#checkbox_1_N")[0].checked === true)
+        {
+            // console.log('不同意');
+            $("#questionImage1")[0].hidden = true;
+            $("#questionImage2")[0].hidden = true;
+            $("#questionImage3")[0].hidden = true;
+            $("#questionImage4")[0].hidden = false;
+
+            $("#divCheckBox_1").hide();
+            $("#checkbox_1_Y")[0].checked = false;
+            $("#checkbox_1_N")[0].checked = false;
+        }
+        else if(flag == 2 && $("#checkbox_1_Y")[0].checked === true)
+        {
+            console.log('同意');
+
+            $("#questionImage4")[0].hidden = true;
+            // 開始取號,先回後端call驗證
+            $("#divQuestion").hide();
+            $("#divMaintain").show();
+        }
+    });
+
+    $("#checkbox_1_Y").click(function(){
+        if ($("#checkbox_1_Y")[0].checked === true) {
+            $("#checkbox_1_N")[0].checked = false;
+            //$("#next1")[0].disabled = false;
+        } else {
+            $("#checkbox_1_N")[0].checked = true;
+            //$("#next1")[0].disabled = true;
+        }    
+    });
+
+    $("#checkbox_1_N").click(function(){
+        if ($("#checkbox_1_N")[0].checked === true) {
+            $("#checkbox_1_Y")[0].checked = false;
+            //$("#next1")[0].disabled = true;
+        } else {
+            $("#checkbox_1_Y")[0].checked = true;
+            //$("#next1")[0].disabled = false;
+        }    
+    });
+
+    //驗證
+    function btnSave() {
+        console.log('btnSave');
+        const v = verification();
+        console.log(v);
+        if(!v)
+        {
+            return false ;
+        }
+
+
+        Page.submit();
+
+    }
+
+    @* $("#btnSave").prop( "disabled", false ); *@
+
+    //驗證
+    function verification()
+    {
+        if($("#txtName").val()=="")
+        {
+            alert("請輸入姓名");
+            $("#txtName").focus();
+
+            return false;
+        }
+        if($("#txtIR_ID").val()=="")
+        {
+            alert("身分證號需填寫");
+            $("#txtIR_ID").focus();
+
+            return false;
+        }
+        if($("#txtPD_Tel").val()=="" && $("#txtPD_Cellphone").val()=="")
+        {
+            alert("需填寫住家電話或手機");
+            $("#txtPD_Tel").focus();
+
+            return false;
+        }
+        if($("#txtVer").val()=="")
+        {
+            alert("驗證碼需填寫");
+            $("#txtVer").focus();
+
+            return false;
+        }
+
+         if($("#txtVer").val() !== answer1 ) {
+             alert("驗證碼輸入錯誤");
+             $("#txtVer").focus();
+
+            return false;
+         }
+
+
+        return true;
+    }
+
+    function CheckID()
+    {
+
+    }
+
+    function CheckMobile()
+    {
+
+    }
+
+    function checkPhone()
+    {
+
+    }
+
+
+
+</script>
