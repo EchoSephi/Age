@@ -55,10 +55,11 @@ namespace Age.Data
 
     public interface IAgeServices
     {
-        Task<int> 檢查身分證是否重複(string 身份證號);
+        Task<AgeGetNumber> 檢查身分證是否重複(string 身份證號);
         Task<dtoReturn1> 取號(dtoInfo dto);
         Task<int> 已預約人數(int year = 0);
         Task<AgeYearSet> 取得年度設定(int year = 0);
+        Task<AgeYearDaySet> 取得報到時間(int 取號碼);
     }
 
     public class AgeServices : IAgeServices
@@ -80,7 +81,7 @@ namespace Age.Data
         }
 
         // 檢查身分證+年份是否重複
-        public async Task<int> 檢查身分證是否重複(string 身份證號)
+        public async Task<AgeGetNumber> 檢查身分證是否重複(string 身份證號)
         {
             var _now = DateTime.Now.Year;
             using (var context = new AgeContext())
@@ -90,11 +91,11 @@ namespace Age.Data
                                && p.取號日期.Year == _now
                                && p.deleted == 0
                                select p).FirstOrDefaultAsync();
-                if (q == null)
+                if (q != null)
                 {
-                    return 0;
+                    return q;
                 }
-                return q.取號碼;
+                return null;
             }
         }
 

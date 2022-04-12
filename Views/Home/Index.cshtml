@@ -5,12 +5,15 @@
         <img src="~/images/title.png" style="width:700px ; margin-bottom:0px" alt="" />
         <br>
         <br>
-        <h2>@ViewData["msg1"]</h1>
-        
+        <h3>@ViewData["msg1"]
+            <br>
+            @ViewData["msg2"]
+        </h3>
+        <br>
         @{
-            string msg2 = ViewData["msg2"].ToString();
-            if (msg2 != "") {
-                <label style="font-size:20px;color:#FF3300">@msg2</label>
+            string msg3 = ViewData["msg3"].ToString();
+            if (msg3 != "") {
+                <label style="font-size:20px;color:#FF3300">@msg3</label>
             }else {
                 <a asp-controller="Home" asp-action="Page" style="font-size: 23px; margin-left:20px" class="btn-default">
                     開始取號

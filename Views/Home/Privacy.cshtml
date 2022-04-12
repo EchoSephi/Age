@@ -25,15 +25,15 @@
                             )&nbsp;&nbsp;
                             <input id="print" type="button" value="列印" style="font-size: 23px;" class="btn-default" onclick="printView()"/>
                             <br>
-                            <br>
+                            
                             姓名:<span id="spanName"  style="font-size:35px">@Model.姓名</span>
                             <br>
-                            <br>
+                           
                             登記日期時段:<span id="spanDateTime"   style="color:Red ; " >@Model.報到時間</span>
-                            <br>
+                           
                             <br>
                             登記位置:台北市仁愛路4段61號5樓櫃檯 
-                            <br>
+                            
                             <br>
                             請於
                             <span style="color:Red ; " id="spanDateTime2"  >@Model.報到時間</span>
@@ -43,7 +43,7 @@
                             <br/>
                             若您無法依原本時間登記，請於
                             <span style="color:Red ; " >@Model.補登記時間</span>
-                            至醫院補登記<br/>
+                            至醫院補登記 
                             <br/>
                             特別提醒:
                             <br>
@@ -96,8 +96,6 @@
                 </blockquote>
                 <br>
                 <br>
-                <br>
-                <br>
                 <div>
                     <h3>到院交通</h3>
                     <img src="~/images/map.jpg" style=" width: 598px; height: 401px;" alt="" />
@@ -109,15 +107,13 @@
                             <td style="width:20%"></td>
                         </tr>
                     </table>
-                    <br>
-                    <br>
-                    <br>
+                    <br> 
 
                     <h3>公車路線(Bus Line)</h3>
                     (1)站名：仁愛大安路口<br>
                     245、37、261、263、270、311、621、630、651、665、1728<br>
                     <br>
-                    <br>
+                    
                     (2)站名：仁愛敦化路口
                     <br>
                     0東、33、37、41、52、245、261、263、270、275、275副、<br>
@@ -125,13 +121,12 @@
                     905、905副、906、906副、909、1211、1728、敦化幹線
                     <br>
                 </div>
-                <br>
-                <br>
-                <br>
+                 
             }
-        } else {
-             <h2> @Model.msg</h2>
-        }
+            else {
+                <h2> @Model.msg</h2>
+            }
+        } 
 
     </div>
 </form>
